@@ -5,6 +5,7 @@
   min-height: 100vh;
   font-size: calc(10px + 1vmin);
   color: #800080;
+  font-style: italic;
 }
 
 .App-link {

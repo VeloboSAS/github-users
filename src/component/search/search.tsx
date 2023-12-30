@@ -1,25 +1,39 @@
 import React, { FC, useEffect, useState } from "react";
-import s from './search.module.css'
-import b from '../githubUsers/github.module.css'
+import s from "./search.module.css";
+import { Button, TextField } from "@mui/material";
 
 type SearchPropsType = {
-    value: string
-    onSubmit: (fixedValue: string) => void
-}
+  value: string;
+  onSubmit: (fixedValue: string) => void;
+};
 
 export const Search: FC<SearchPropsType> = (props) => {
+  const [tempSearch, setTempSearch] = useState(props.value);
 
-    const [tempSearch, setTempSearch] = useState(props.value)
+  useEffect(() => {
+    setTempSearch(props.value);
+  }, [props.value]);
 
-    useEffect(() => {
-        setTempSearch(props.value)
-    }, [props.value])
-    
-    return <div className={s.search}>
-    <h1>Search GitHub Users</h1>
-    <input placeholder="search" value={tempSearch} onChange={ (e) => setTempSearch(e.currentTarget.value)}/>
-    <button className={b.btn} onClick={() => {
-        props.onSubmit(tempSearch)
-    }}>Find</button>
-</div>
-}
+  return (
+    <div className={s.search}>
+      <TextField
+        color={"secondary"}
+        id="standard-basic"
+        label="Type value"
+        variant="standard"
+        value={tempSearch}
+        onChange={(e) => setTempSearch(e.currentTarget.value)}
+      />
+      <Button
+        style={{ margin: "10px" }}
+        variant="contained"
+        color="secondary"
+        onClick={() => {
+          props.onSubmit(tempSearch);
+        }}
+      >
+        Find
+      </Button>
+    </div>
+  );
+};

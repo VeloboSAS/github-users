@@ -23,11 +23,11 @@ export const UserList: FC<UsersListPropsType> = (props) => {
     
     return <>
             <h2>List Users</h2>
-            <ul>
+            <div>
             {users
-            .map(u => <li key={u.id} className={props.selectedUser === u ? s.selected: ''} onClick={() => {
+            .map(u => <div key={u.id} className={props.selectedUser === u ? s.selected: ''} onClick={() => {
                 props.onUserSelect(u)
-                }}>{u.login}</li>)}
-            </ul>
+                }}>{u.login}</div>)}
+            </div>
         </>
 }

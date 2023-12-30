@@ -35,8 +35,9 @@ export const UserDetails: FC<UserDetailsPropsType> = (props) => {
                 {userDetails && <>
                 <Timer seconds={seconds} onChange={setSeconds} timerKey={userDetails.id.toString()}/>
                 <h3>{userDetails.login}</h3>
-                <div>
-                    <img src={userDetails.avatar_url} width={150} height={150} alt=''/>
+                <div style={{fontSize:'0.8em'}}>
+                    <img src={userDetails.avatar_url} 
+                    style={{width: '18vh'}}  alt=''/>
                     <br/>
                     folowers: {userDetails.followers}
                     <br/>
